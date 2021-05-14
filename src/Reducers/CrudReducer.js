@@ -12,6 +12,17 @@ const initialState = {
 
 export default function(state = initialState, action){
     switch(action.type){
+        case LOGIN:
+            return{
+                ...state,
+                loading:true
+            }
+            case LOGIN_EXITO:
+                return{
+                    ...state,
+                    loading:false,
+                    tareas:[...state.tareas, action.payload]
+                }
         default:
             return state;
     }
