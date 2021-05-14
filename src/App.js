@@ -6,9 +6,14 @@ import Login from './Componentes/Login/Login';
 import Index from './Componentes/Index/Index';
 import Tarea from './Componentes/Tareas/Tareas';
 
+//Redux
+import {Provider} from 'react-redux';
+import Store from './Store';
+
 function App() {
   return (
    <Router>
+     <Provider store={Store}>
       <Navbar/>
       <div className="container-fluid pt-0">
         <switch>
@@ -23,6 +28,7 @@ function App() {
           </Route>
         </switch>
       </div>
+      </Provider>
    </Router>
   );
 }

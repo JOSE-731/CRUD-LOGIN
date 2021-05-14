@@ -1,15 +1,21 @@
 import React,{useEffect, useState} from 'react';
 import {Link, NavLink} from 'react-router-dom';
+import { LoginAction } from '../../Actions/loginActions';
+import {useDispatch, useSelector}  from 'react-redux';
 
-const Login = () =>{
+const Login = e =>{
+
+    const dispatch = useDispatch();
+    const loginUsers = users => dispatch(LoginAction(users))
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [usuario, setUsuario] = useState('');
-    const [registro, setRegistro] = useState(true);
+    const [registro, setRegistro] = useState(false);
     const [error, setError] = useState(null);
 
     const validacion = e =>{
+
         e.preventDefault()
 
         if(!email.trim()){
@@ -34,6 +40,10 @@ const Login = () =>{
         }
 
            setError(null)
+           loginUsers({
+               email,
+               password
+           });
     }
 
     return(
